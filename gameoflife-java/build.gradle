@@ -1,0 +1,55 @@
+plugins {
+    id 'application'
+    id 'jacoco'
+    id 'com.diffplug.spotless' version '8.10.4'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:6.0.1'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.9
+            }
+        }
+    }
+}
+
+spotless {
+    java {
+        googleJavaFormat()
+        licenseHeaderFile rootProject.file('LICENSE_TEMPLATE.txt')
+    }
+}
+
+application {
+    mainClass = 'id.kalakian.gameoflife.Main'
+}
+
+run {
+    standardInput = System.in
+}

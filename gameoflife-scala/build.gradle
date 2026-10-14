@@ -1,0 +1,19 @@
+plugins {
+    id 'scala'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+}
+
+scala {
+    scalaVersion = "3.6.3"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
