@@ -29,7 +29,7 @@ The program is using ANSI Escape Codes to clear screen.
 
 It has been tested in a Linux machine.
 
-It should work in a MaxOS machine.
+It should work in a macOS machine.
 
 It has not been tested in a Windows machine.
 
